@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package english_lesson;
+
+// エラー
+message Error {
+  string code = 1;
+  string message = 2;
+}

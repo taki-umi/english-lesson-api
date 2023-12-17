@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.english_lesson";
+option go_package = "github.com/ryutah/english_lesson";
+
+package english_lesson;
+
+import "proto/model/lesson.proto";
+import "proto/model/error.proto";
+
+// レッスン取得サービス
+service GetLessonService {
+  // 1. レッスン取得サービス
+  //
+  // ユーザーIDまたは日付を指定してレッスンを取得する
+  rpc GetLessons(GetLessonRequest) returns (GetLessonResponse) {
+  }
+}
+
+// レッスン取得サービス リクエスト
+message GetLessonRequest {
+  // [M] ユーザーID
+  string userId = 1;
+
+  // [O] レッスン日付
+  LessonDate lessonDate = 2;
+}
+
+// レッスン取得サービス レスポンス
+message GetLessonResponse {
+  // レッスン一覧
+  repeated Lesson lessons = 1;
+
+  // エラー情報
+  repeated Error errors = 2;
+}

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package english_lesson;
+
+// レッスン情報モデル
+message Lesson {
+  // ユーザーID
+  string userId = 1;
+
+  // レッスンID
+  string lessonId = 2;
+
+  // レッスン日時
+  LessonDate lessonDate = 3;
+
+  // レッスン開始時刻
+  TimeDetail lessonStartTime = 4;
+
+  // レッスン終了時刻
+  TimeDetail lessonEndTime = 5;
+
+  // レッスンステータス
+  LessonStatus lessonStatus = 6;
+}
+
+// レッスン日時モデル
+message LessonDateTime {
+  LessonDate lessonDate = 1;
+  TimeDetail lessonStartTime = 2;
+}
+
+// レッスン日付モデル
+message LessonDate {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+// 時間モデル
+message TimeDetail {
+  int32 hour = 1;
+  int32 minute = 2;
+}
+
+// レッスンステータス
+enum LessonStatus {
+  NOT_YET = 0;
+  CANCEL = 1;
+  DONE = 2;
+}
